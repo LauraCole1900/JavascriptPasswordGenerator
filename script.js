@@ -42,25 +42,21 @@ var passwordOpt = {
         lowerChoice = passwordOpt.lCase[lowerIndex];
         console.log(lowerChoice);
         password = password.concat(lowerChoice);
-        // return password;
       } else if (keyChoice === 1) {
         upperIndex = Math.floor(Math.random() * 25);
         upperChoice = passwordOpt.uCase[upperIndex];
         console.log(upperChoice);
         password = password.concat(upperChoice);
-        // return password;
       } else if (keyChoice === 2) {
         numIndex = Math.floor(Math.random() * 9);
         numChoice = passwordOpt.numbers[numIndex];
         console.log(numChoice);
         password = password.concat(numChoice);
-        // return password;
       } else if (keyChoice === 3) {
         specIndex = Math.floor(Math.random() * 10);
         specChoice = passwordOpt.special[specIndex];
         console.log(specChoice);
         password = password.concat(specChoice);
-        // return password;
       }
   }
 
@@ -68,8 +64,8 @@ var passwordOpt = {
   function writePassword() {
     for (var i = 0; i < passwordLength; i++) {
       charGen();
-      return password;
   }
+  return password;
 }
 
 writePassword();
