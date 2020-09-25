@@ -12,9 +12,9 @@ var generateBtn = document.querySelector("#generate")
 
 
 
-// Variables
+// Global variables
 
-var passwordLength = 9;
+var passwordLength = 12;
 var lowerCase = true;
 var upperCase = true;
 var numberCase = true;
@@ -32,6 +32,8 @@ var passwordOpt = {
 
 // user inputs
 // input variables
+var textArea = document.getElementById("password").parentElement;
+var cardBody = textArea.parentElement;
 var userInput = document.createElement("form");
 var charLength = document.createElement("input");
 var useLower = document.createElement("input");
@@ -43,65 +45,72 @@ var formLabelLower = document.createElement("label");
 var formLabelUpper = document.createElement("label");
 var formLabelNum = document.createElement("label");
 var formLabelSpec = document.createElement("label");
+var formSubmit = document.createElement("input");
 
 
 // add inputs
-card-body.appendChild(userInput);
+cardBody.appendChild(userInput);
 
 // password length
-card-body.userInput.appendChild(formLabelLgth);
+userInput.appendChild(formLabelLgth);
 formLabelLgth.setAttribute("for", "pwordLength");
 formLabelLgth.textContent = ("How many characters? Min 8 Max 128");
-card-body.userInput.appendChild(charLength);
+userInput.appendChild(charLength);
 charLength.setAttribute("type", "text");
 charLength.setAttribute("id", "pwordLength");
 charLength.setAttribute("name", "pwordLength");
 
 // lowercase
-card-body.userInput.appendChild(formLabelLower);
+userInput.appendChild(formLabelLower);
 formLabelLower.textContent = ("Use lowercase?");
 formLabelLower.setAttribute("for", "lowercase");
-card-body.userInput.appendChild(useLower);
+userInput.appendChild(useLower);
 useLower.setAttribute("type", "checkbox");
 useLower.setAttribute("id", "lowercase");
-useLower.setAttribute("name", "lowercase");
+useLower.setAttribute("name", "characters");
 
 // uppercase
-card-body.userInput.appendChild(formLabelUpper);
+userInput.appendChild(formLabelUpper);
 formLabelUpper.textContent = ("Use uppercase?");
 formLabelUpper.setAttribute("for", "uppercase");
-card-body.userInput.appendChild(useUpper);
-useUpper.setAttribute("type", "text");
+userInput.appendChild(useUpper);
+useUpper.setAttribute("type", "checkbox");
 useUpper.setAttribute("id", "uppercase");
-useUpper.setAttribute("name", "uppercase");
+useUpper.setAttribute("name", "characters");
 
 // numbers
-card-body.userInput.appendChild(formLabelNum);
+userInput.appendChild(formLabelNum);
 formLabelNum.textContent = ("Use numbers?");
 formLabelNum.setAttribute("for", "numbers");
-card-body.userInput.appendChild(useNum);
+userInput.appendChild(useNum);
 useNum.setAttribute("type", "checkbox");
 useNum.setAttribute("id", "numbers");
-useNum.setAttribute("name", "numbers");
+useNum.setAttribute("name", "characters");
 
 // special characters
-card-body.userInput.appendChild(formLabelSpec);
+userInput.appendChild(formLabelSpec);
 formLabelSpec.textContent = ("Use special characters?");
 formLabelSpec.setAttribute("for", "specialChar");
-card-body.userInput.appendChild(useSpec);
+userInput.appendChild(useSpec);
 useSpec.setAttribute("type", "checkbox");
 useSpec.setAttribute("id", "specialChar");
-useSpec.setAttribute("name", "specialChar");
+useSpec.setAttribute("name", "characters");
+
+// submit form
+userInput.appendChild(formSubmit);
+formSubmit.setAttribute("type", "submit");
+formSubmit.setAttribute("value", "submit");
 
 
 
 
 // This needs to
 // 1. choose a random key
-// 2. randomly choose an index from the array of that key
-// 3. record the value at that index
-// 4. repeat as many times as user told it to
-// 5. spit out all of the values in the order chosen as the password
+// 2. randomly choose an index from the array of that key BUT
+// 3. make sure each selected array is used at least once
+// 4. record the value at that index
+// 5. repeat as many times as user told it to
+// 6. spit out all of the values in the order chosen as the password
 
 
 // random character generator function
