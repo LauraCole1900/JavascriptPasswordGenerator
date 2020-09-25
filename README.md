@@ -13,8 +13,9 @@ This is a random password generator using JavaScript. The user selects the follo
 After selecting the criteria, the user then clicks the button, which prompts ths program to run to generate a random secure password that fits the user's criteria.
 
 
-#### Screenshot
-![PasswordGenerator screencap](password-generator-screencap.png)
+#### Screenshots
+![PasswordGenerator screencap without password](password-generator-blank-screencap.png)
+![PasswordGenerator screencap with password](password-generator-with-pw-screencap.png)
 
 
 #### Link
