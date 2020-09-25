@@ -19,7 +19,7 @@ var lowerCase = true;
 var upperCase = true;
 var numberCase = true;
 var specialCase = true;
-var password = "";
+var passwordTxt = "";
 
 var passwordOpt = {
   lCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
@@ -35,43 +35,55 @@ var passwordOpt = {
 // 4. repeat as many times as user told it to
 // 5. spit out all of the values in the order chosen as the password
 
+
+// random character generator function
   function charGen() {
     keyChoice = Math.floor(Math.random() * 4);
       if (keyChoice === 0) {
         lowerIndex = Math.floor(Math.random() * 25);
         lowerChoice = passwordOpt.lCase[lowerIndex];
         console.log(lowerChoice);
-        password = password.concat(lowerChoice);
+        passwordTxt = passwordTxt.concat(lowerChoice);
       } else if (keyChoice === 1) {
         upperIndex = Math.floor(Math.random() * 25);
         upperChoice = passwordOpt.uCase[upperIndex];
         console.log(upperChoice);
-        password = password.concat(upperChoice);
+        passwordTxt = passwordTxt.concat(upperChoice);
       } else if (keyChoice === 2) {
         numIndex = Math.floor(Math.random() * 9);
         numChoice = passwordOpt.numbers[numIndex];
         console.log(numChoice);
-        password = password.concat(numChoice);
+        passwordTxt = passwordTxt.concat(numChoice);
       } else if (keyChoice === 3) {
         specIndex = Math.floor(Math.random() * 10);
         specChoice = passwordOpt.special[specIndex];
         console.log(specChoice);
-        password = password.concat(specChoice);
+        passwordTxt = passwordTxt.concat(specChoice);
       }
   }
 
-
+// password-writer function
+// must include loop
   function writePassword() {
     for (var i = 0; i < passwordLength; i++) {
       charGen();
   }
-  return password;
+  return passwordTxt;
 }
 
-writePassword();
 
-alert(password);
+// clear text function
+function clearText() {
+  generate.addEventListener("click", function(){
+    document.getElementById("password").innerHTML = "";
+  })
+}
 
-// passwordText.value = password;
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// call password-writer function upon button click
+// write password to text field
+generate.addEventListener("click", function(){
+  clearText();
+  writePassword();
+  document.getElementById("password").innerHTML = passwordTxt;
+});
+
