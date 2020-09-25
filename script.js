@@ -15,16 +15,16 @@ var generateBtn = document.querySelector("#generate")
 // Global variables
 
 var passwordLength = 1;
-var lowerCase = true;
-var upperCase = true;
-var numberCase = true;
-var specialCase = true;
 var passwordTxt = "";
 
 var passwordOpt = {
+  lowerCase: true,
   lCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+  upperCase: true,
   uCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+  numberCase: true,
   numbers: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+  specialCase: true,
   special: ["!", "#", "%", "^", "*", "+", "-", "_", "?", ".", "~"],
 }
 
@@ -40,17 +40,13 @@ function defineLength() {
   }
 }
 
+// this needs a recursive loop
 passwordLength = prompt("How many characters? min 8 max 128");
 defineLength();
 
-lowercase = confirm("Would you like to include lowercase letters?")
-  if (lowercase === true ){
+passwordOpt.userLowerCase = confirm("Would you like to include lowercase letters?");
 
-  } else if (lowercase === false) {
-
-  }
-
-uppercase = confirm("Would you like to include uppercase letters?")
+uppercase = confirm("Would you like to include uppercase letters?");
   if (uppercase === true ){
 
   } else if (uppercase === false) {
@@ -86,33 +82,49 @@ special = confirm("Would you like to include special characters (!, #, %, ^, *, 
 // random character generator function
   function charGen() {
     keyChoice = Math.floor(Math.random() * 4);
-      if (keyChoice === 0) {
-        lowerIndex = Math.floor(Math.random() * 25);
-        lowerChoice = passwordOpt.lCase[lowerIndex];
-        console.log(lowerChoice);
-        passwordTxt = passwordTxt.concat(lowerChoice);
-      } else if (keyChoice === 1) {
-        upperIndex = Math.floor(Math.random() * 25);
-        upperChoice = passwordOpt.uCase[upperIndex];
-        console.log(upperChoice);
-        passwordTxt = passwordTxt.concat(upperChoice);
-      } else if (keyChoice === 2) {
-        numIndex = Math.floor(Math.random() * 9);
-        numChoice = passwordOpt.numbers[numIndex];
-        console.log(numChoice);
-        passwordTxt = passwordTxt.concat(numChoice);
-      } else if (keyChoice === 3) {
-        specIndex = Math.floor(Math.random() * 10);
-        specChoice = passwordOpt.special[specIndex];
-        console.log(specChoice);
-        passwordTxt = passwordTxt.concat(specChoice);
+    if (keyChoice === 0) {
+      if (passwordOpt.lowerCase === true) {
+      lowerIndex = Math.floor(Math.random() * 25);
+      lowerChoice = passwordOpt.lCase[lowerIndex];
+      console.log(lowerChoice);
+      passwordTxt = passwordTxt.concat(lowerChoice);
+      } else if (passwordOpt.lowercase === false) {
+        charGen();
+      }
+    } else if (keyChoice === 1) {
+      if (passwordOpt.upperCase === true) {
+      upperIndex = Math.floor(Math.random() * 25);
+      upperChoice = passwordOpt.uCase[upperIndex];
+      console.log(upperChoice);
+      passwordTxt = passwordTxt.concat(upperChoice);
+      } else if (passwordOpt.upperCase === false) {
+        charGen();
+      }
+    } else if (keyChoice === 2) {
+      if (passwordOpt.numberCase === true) {
+      numIndex = Math.floor(Math.random() * 9);
+      numChoice = passwordOpt.numbers[numIndex];
+      console.log(numChoice);
+      passwordTxt = passwordTxt.concat(numChoice);
+      } else if (passwordOpt.numberCase === false) {
+        charGen();
+      }
+    } else if (keyChoice === 3)
+      if (passwordOpt.specialCase === true) {
+      specIndex = Math.floor(Math.random() * 10);
+      specChoice = passwordOpt.special[specIndex];
+      console.log(specChoice);
+      passwordTxt = passwordTxt.concat(specChoice);
+      } else if (passwordOpt.specialCase === false) {
+        charGen();
       }
   }
 
 // password-writer function
 // must include loop
   function writePassword() {
-    for (var i = 0; i < passwordLength; i++) {
+    while (passwordTxt.length < passwordLength){
+    //for (var i = 0; i < passwordLength; i++) {
       charGen();
   }
   return passwordTxt;
