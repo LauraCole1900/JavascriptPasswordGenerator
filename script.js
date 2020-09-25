@@ -28,6 +28,74 @@ var passwordOpt = {
   special: ["!", "#", "%", "^", "*", "+", "-", "_", "?", ".", "~"],
 }
 
+
+
+// user inputs
+// input variables
+var userInput = document.createElement("form");
+var charLength = document.createElement("input");
+var useLower = document.createElement("input");
+var useUpper = document.createElement("input");
+var useNum = document.createElement("input");
+var useSpec = document.createElement("input");
+var formLabelLgth = document.createElement("label");
+var formLabelLower = document.createElement("label");
+var formLabelUpper = document.createElement("label");
+var formLabelNum = document.createElement("label");
+var formLabelSpec = document.createElement("label");
+
+
+// add inputs
+card-body.appendChild(userInput);
+
+// password length
+card-body.userInput.appendChild(formLabelLgth);
+formLabelLgth.setAttribute("for", "pwordLength");
+formLabelLgth.textContent = ("How many characters? Min 8 Max 128");
+card-body.userInput.appendChild(charLength);
+charLength.setAttribute("type", "text");
+charLength.setAttribute("id", "pwordLength");
+charLength.setAttribute("name", "pwordLength");
+
+// lowercase
+card-body.userInput.appendChild(formLabelLower);
+formLabelLower.textContent = ("Use lowercase?");
+formLabelLower.setAttribute("for", "lowercase");
+card-body.userInput.appendChild(useLower);
+useLower.setAttribute("type", "checkbox");
+useLower.setAttribute("id", "lowercase");
+useLower.setAttribute("name", "lowercase");
+
+// uppercase
+card-body.userInput.appendChild(formLabelUpper);
+formLabelUpper.textContent = ("Use uppercase?");
+formLabelUpper.setAttribute("for", "uppercase");
+card-body.userInput.appendChild(useUpper);
+useUpper.setAttribute("type", "text");
+useUpper.setAttribute("id", "uppercase");
+useUpper.setAttribute("name", "uppercase");
+
+// numbers
+card-body.userInput.appendChild(formLabelNum);
+formLabelNum.textContent = ("Use numbers?");
+formLabelNum.setAttribute("for", "numbers");
+card-body.userInput.appendChild(useNum);
+useNum.setAttribute("type", "checkbox");
+useNum.setAttribute("id", "numbers");
+useNum.setAttribute("name", "numbers");
+
+// special characters
+card-body.userInput.appendChild(formLabelSpec);
+formLabelSpec.textContent = ("Use special characters?");
+formLabelSpec.setAttribute("for", "specialChar");
+card-body.userInput.appendChild(useSpec);
+useSpec.setAttribute("type", "checkbox");
+useSpec.setAttribute("id", "specialChar");
+useSpec.setAttribute("name", "specialChar");
+
+
+
+
 // This needs to
 // 1. choose a random key
 // 2. randomly choose an index from the array of that key
@@ -73,16 +141,16 @@ var passwordOpt = {
 
 
 // clear text function
-function clearText() {
-  generate.addEventListener("click", function(){
-    document.getElementById("password").innerHTML = "";
-  })
-}
+// function clearText() {
+//   generate.addEventListener("click", function(){
+//     document.getElementById("password").innerHTML = null;
+//   })
+// }
 
 // call password-writer function upon button click
 // write password to text field
 generate.addEventListener("click", function(){
-  clearText();
+  // clearText();
   writePassword();
   document.getElementById("password").innerHTML = passwordTxt;
 });
