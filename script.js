@@ -14,7 +14,7 @@ var generateBtn = document.querySelector("#generate")
 
 // Global variables
 
-var passwordLength = 12;
+var passwordLength = 1;
 var lowerCase = true;
 var upperCase = true;
 var numberCase = true;
@@ -31,75 +31,45 @@ var passwordOpt = {
 
 
 // user inputs
-// input variables
-var textArea = document.getElementById("password").parentElement;
-var cardBody = textArea.parentElement;
-var userInput = document.createElement("form");
-var charLength = document.createElement("input");
-var useLower = document.createElement("input");
-var useUpper = document.createElement("input");
-var useNum = document.createElement("input");
-var useSpec = document.createElement("input");
-var formLabelLgth = document.createElement("label");
-var formLabelLower = document.createElement("label");
-var formLabelUpper = document.createElement("label");
-var formLabelNum = document.createElement("label");
-var formLabelSpec = document.createElement("label");
-var formSubmit = document.createElement("input");
+function defineLength() {
+  if (passwordLength >= 8 && passwordLength <= 128) {
+    console.log(passwordLength);
+  } else {
+    passwordLength = prompt("Please enter a number between 8 and 128.");
+    defineLength();
+  }
+}
 
+passwordLength = prompt("How many characters? min 8 max 128");
+defineLength();
 
-// add inputs
-cardBody.appendChild(userInput);
+lowercase = confirm("Would you like to include lowercase letters?")
+  if (lowercase === true ){
 
-// password length
-userInput.appendChild(formLabelLgth);
-formLabelLgth.setAttribute("for", "pwordLength");
-formLabelLgth.textContent = ("How many characters? Min 8 Max 128");
-userInput.appendChild(charLength);
-charLength.setAttribute("type", "text");
-charLength.setAttribute("id", "pwordLength");
-charLength.setAttribute("name", "pwordLength");
+  } else if (lowercase === false) {
 
-// lowercase
-userInput.appendChild(formLabelLower);
-formLabelLower.textContent = ("Use lowercase?");
-formLabelLower.setAttribute("for", "lowercase");
-userInput.appendChild(useLower);
-useLower.setAttribute("type", "checkbox");
-useLower.setAttribute("id", "lowercase");
-useLower.setAttribute("name", "characters");
+  }
 
-// uppercase
-userInput.appendChild(formLabelUpper);
-formLabelUpper.textContent = ("Use uppercase?");
-formLabelUpper.setAttribute("for", "uppercase");
-userInput.appendChild(useUpper);
-useUpper.setAttribute("type", "checkbox");
-useUpper.setAttribute("id", "uppercase");
-useUpper.setAttribute("name", "characters");
+uppercase = confirm("Would you like to include uppercase letters?")
+  if (uppercase === true ){
 
-// numbers
-userInput.appendChild(formLabelNum);
-formLabelNum.textContent = ("Use numbers?");
-formLabelNum.setAttribute("for", "numbers");
-userInput.appendChild(useNum);
-useNum.setAttribute("type", "checkbox");
-useNum.setAttribute("id", "numbers");
-useNum.setAttribute("name", "characters");
+  } else if (uppercase === false) {
 
-// special characters
-userInput.appendChild(formLabelSpec);
-formLabelSpec.textContent = ("Use special characters?");
-formLabelSpec.setAttribute("for", "specialChar");
-userInput.appendChild(useSpec);
-useSpec.setAttribute("type", "checkbox");
-useSpec.setAttribute("id", "specialChar");
-useSpec.setAttribute("name", "characters");
+  }
 
-// submit form
-userInput.appendChild(formSubmit);
-formSubmit.setAttribute("type", "submit");
-formSubmit.setAttribute("value", "submit");
+numbers = confirm("Would you like to include numbers?")
+  if (numbers === true ){
+
+  } else if (numbers === false) {
+
+  }
+
+special = confirm("Would you like to include special characters (!, #, %, ^, *, +, -, _, ?, ., ~)?");
+  if (special === true ){
+
+  } else if (special === false) {
+
+  }
 
 
 
