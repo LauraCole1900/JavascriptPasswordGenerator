@@ -1,4 +1,4 @@
-// global variables
+// Global variables
 
 var generateBtn = document.querySelector("#generate")
 
@@ -17,10 +17,9 @@ var passwordOpt = {
 }
 
 
+// User inputs
 
-// user inputs
-
-// password length recursive function
+// Define password length
 function defineLength() {
   if (passwordLength >= 8 && passwordLength <= 128) {
     console.log(passwordLength);
@@ -30,7 +29,7 @@ function defineLength() {
   }
 }
 
-// password conditions recursive function
+// Define password conditions
 function chooseCond() {
   alert("Please select at least one of the following:")
   passwordOpt.lowerCase = confirm("Would you like to include lowercase letters? Click 'OK' for yes, 'Cancel' for no");
@@ -42,112 +41,90 @@ function chooseCond() {
   }
 }
 
-// this needs a recursive function - write above
-passwordLength = prompt("How many characters? min 8 max 128");
-defineLength();
 
-// what if the user doesn't choose at least one condition? also needs a recursive function - write above
-chooseCond();
+// Character-generation functions
 
-
-
-// This needs to
-// 1. choose a random key AND
-// 2. randomly choose an index from the array of that key AND
-// 3. record the value at that index AND
-// 4. repeat until the password contains the desired number of characters AND
-// 5. make sure each selected key is used at least once AND
-// 6. spit out all of the values as the password
-
-
-// generate lowercase letters function
-function lowerGen() {
-  lowerIndex = Math.floor(Math.random() * passwordOpt.lCase.length);
-  lowerChoice = passwordOpt.lCase[lowerIndex];
-  passwordTxt = passwordTxt.concat(lowerChoice);
+// Generate random password characters from the chosen character array
+function charGen(arr) {
+  charIndex = Math.floor(Math.random() * arr.length);
+  charChoice = arr[charIndex];
+  passwordTxt = passwordTxt.concat(charChoice);
 }
 
-// generate uppercase letters function
-function upperGen() {
-  upperIndex = Math.floor(Math.random() * passwordOpt.uCase.length);
-  upperChoice = passwordOpt.uCase[upperIndex];
-  passwordTxt = passwordTxt.concat(upperChoice);
-}
-
-// generate numbers function
-function numberGen() {
-  numIndex = Math.floor(Math.random() * passwordOpt.numbers.length);
-  numChoice = passwordOpt.numbers[numIndex];
-  passwordTxt = passwordTxt.concat(numChoice);
-}
-
-// generate special characters function
-function specialGen() {
-  specIndex = Math.floor(Math.random() * passwordOpt.special.length);
-  specChoice = passwordOpt.special[specIndex];
-  passwordTxt = passwordTxt.concat(specChoice);
-}
-
-// initial character generation function
-function charGen() {
+// Initial character generation function: generates one character from each selected array
+function initCharGen() {
   if (passwordOpt.lowerCase === true) {
-    lowerGen();
-  } else if (passwordOpt.upperCase === true) {
-    upperGen();
-  } else if (passwordOpt.numberCase === true) {
-    numberGen();
-  } else if (passwordOpt.specialCase === true) {
-    specialGen();
+    charGen(passwordOpt.lCase);
+  }
+
+  if (passwordOpt.upperCase === true) {
+    charGen(passwordOpt.uCase);
+  }
+
+  if (passwordOpt.numberCase === true) {
+    charGen(passwordOpt.numbers);
+  }
+
+  if (passwordOpt.specialCase === true) {
+    charGen(passwordOpt.special);
   }
 }
 
-// random character generator function
-  function charAdd() {
-    keyChoice = Math.floor(Math.random() * 4);
-    if (keyChoice === 0) {
+// Random character generator function
+function charAdd() {
+  keyChoice = Math.floor(Math.random() * 4);
+  switch (keyChoice) {
+    case 0:
       if (passwordOpt.lowerCase === true) {
-        lowerGen();
-      } else if (passwordOpt.lowercase === false) {
+        charGen(passwordOpt.lCase);
+      } else {
         charAdd();
       }
-    } else if (keyChoice === 1) {
+      break;
+    case 1:
       if (passwordOpt.upperCase === true) {
-      upperGen();
-      } else if (passwordOpt.upperCase === false) {
+        charGen(passwordOpt.uCase);
+      } else {
         charAdd();
       }
-    } else if (keyChoice === 2) {
+      break;
+    case 2:
       if (passwordOpt.numberCase === true) {
-      numberGen();
-      } else if (passwordOpt.numberCase === false) {
+        charGen(passwordOpt.numbers);
+      } else {
         charAdd();
       }
-    } else if (keyChoice === 3)
+      break;
+    case 3:
       if (passwordOpt.specialCase === true) {
-      specialGen();
-      } else if (passwordOpt.specialCase === false) {
+        charGen(passwordOpt.special);
+      } else {
         charAdd();
       }
+      break;
+    default:
+      console.log(keyChoice);
   }
+}
 
-
-
-// password-writer function
-// must include loop
-  function writePassword() {
-    while (passwordTxt.length < passwordLength){
-      charAdd();
-      charGen();
+// Create password
+function createPassword() {
+  while (passwordTxt.length < passwordLength) {
+    initCharGen();
+    charAdd();
   }
   return passwordTxt;
 }
 
 
+// Prompts user to choose password length and character sets
+passwordLength = prompt("How many characters? min 8 max 128");
+defineLength();
+chooseCond();
 
-// call password-writer function upon button click
-// write password to text field
-generate.addEventListener("click", function(){
-  writePassword();
+
+// Call createPassword() upon button click & write password to text field
+generate.addEventListener("click", function () {
+  createPassword();
   document.getElementById("password").innerHTML = passwordTxt;
 });
-
