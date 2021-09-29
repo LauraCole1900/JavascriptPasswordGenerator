@@ -33,10 +33,10 @@ After selecting the criteria, the user then clicks the button, which prompts ths
 ## Screenshots
 
 Password generator without password:
-![PasswordGenerator screencap without password](password-generator-blank-screencap.png)
+![PasswordGenerator screencap without password](assets/password-generator-blank-screencap.png)
 
 Password generator with password:
-![PasswordGenerator screencap with password](password-generator-with-pw-screencap.png)
+![PasswordGenerator screencap with password](assets/password-generator-with-pw-screencap.png)
 
 ## Installation Instructions
 
@@ -80,4 +80,4 @@ If you have further questions, you can reach me at lauracole1900@comcast.net. Fo
 
 ## Badges
 
-![License badge](https://img.shields.io/badge/license-MIT-0d4b16) [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/LauraCole1900/JavascriptPasswordGenerator)
+![License badge](https://img.shields.io/badge/license-MIT-b80000) [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/LauraCole1900/JavascriptPasswordGenerator)
