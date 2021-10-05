@@ -60,7 +60,7 @@ This project is intended to be used to generate secure passwords between 8 and 1
 
 ## Technologies Used
 
-HTML, CSS, JavaScript
+![HTML5](https://img.shields.io/badge/built%20with-HTML5-f06529) ![CSS3](https://img.shields.io/badge/built%20with-CSS3-2965f1) ![JavaScript](https://img.shields.io/badge/built%20with-JavaScript-f0db4f)
 
 ## Tests
 
